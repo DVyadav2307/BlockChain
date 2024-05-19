@@ -42,7 +42,7 @@ class Blockchain:
                 return False                        #return false when the hash of the previous block doesn't match the current block
             prev_proof=previousBlock['proof']
             proof=block['proof']
-            hash_operation= hashlib.sha256(str(proof*3 - prev_proof*3).encode()).hexdigest()      #get the hash generated inorder to check if it follows our four 0 rule
+            hash_operation= hashlib.sha256(str(proof**2 - prev_proof**2).encode()).hexdigest()      #get the hash generated inorder to check if it follows our four 0 rule
             if hash_operation [:4]!='0000':
                 return False                    #return false it the genrated hash doesn't follow our rule
             previousBlock=block     #increment the previous block to our current block
